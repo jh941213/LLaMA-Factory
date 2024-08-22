@@ -612,6 +612,15 @@ _register_template(
     efficient_eos=True,
 )
 
+_register_template(
+    name="exaone",
+    format_user=StringFormatter(slots=[("[|user|]\n\n{{content}}[|endofturn|]""[|assistant|]\n\n")]),
+    format_system=StringFormatter(slots=["[|system|]\n\n{{content}}[|endofturn|]"]),
+    format_prefix=EmptyFormatter(slots=[{"bos_token"}]),
+    stop_words=["[|endofturn|]"],
+    replace_eos=True,
+)
+
 
 _register_template(
     name="falcon",
